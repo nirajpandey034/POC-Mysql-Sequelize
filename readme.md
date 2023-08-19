@@ -1,13 +1,14 @@
 # Environment Variables to be setup
 
+```
 # DB Environment Variables
 
-```
+
 SHOP_DB_HOST
 SHOP_DB_NAME
 SHOP_DB_USER
 SHOP_DB_PASSWORD
-SHOP_DB_DIALECT
+SHOP_DB_DIALECT = mysql
 
 # APP Environment Variables
 

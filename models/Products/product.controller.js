@@ -1,27 +1,32 @@
 const ProductModel = require("./product.model");
+const logger = require("../../logger");
 
-const sync = () => {
-  ProductModel.sync({
-    alter: true,
-  });
-};
 const addProduct = async (data) => {
   try {
-    const response = ProductModel.create(data);
+    const response = await ProductModel.create(data);
     return response;
   } catch (err) {
-    console.log(err);
-    throw new Error(err);
+    logger.error({ operation: "addProduct", error: err.message });
+    return err.message;
   }
 };
 
-const getProducts = async () => {
+const updateProduct = async ({ data, id }) => {
   try {
-    const response = ProductModel.findAll();
+    const response = await ProductModel.update(data, { where: { id: id } });
     return response;
   } catch (err) {
-    console.log(err);
-    throw new Error(err);
+    logger.error({ operation: "addProduct", error: err.message });
+    return err.message;
   }
 };
-module.exports = { addProduct, getProducts };
+const getProducts = async () => {
+  try {
+    const response = await ProductModel.findAll();
+    return response;
+  } catch (err) {
+    logger.error({ operation: "addProduct", error: err.message });
+    return err.message;
+  }
+};
+module.exports = { addProduct, getProducts, updateProduct };
