@@ -1,8 +1,9 @@
 # Environment Variables to be setup
 
+```
 # DB Environment Variables
 
-```
+
 SHOP_DB_HOST
 SHOP_DB_NAME
 SHOP_DB_USER
