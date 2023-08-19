@@ -7,6 +7,7 @@ const {
   addProduct,
   getProducts,
   updateProduct,
+  deleteProduct,
 } = require("../models/Products/product.controller");
 
 (function sync() {
@@ -35,6 +36,14 @@ router.post("/add", async (req, res) => {
 router.put("/update", async (req, res) => {
   try {
     const data = await updateProduct({ data: req.body, id: req.body.id });
+    return res.json({ status: "success", result: data });
+  } catch (err) {
+    return res.json({ status: "failed", reason: err });
+  }
+});
+router.delete("/delete", async (req, res) => {
+  try {
+    const data = await deleteProduct(req.body.id);
     return res.json({ status: "success", result: data });
   } catch (err) {
     return res.json({ status: "failed", reason: err });

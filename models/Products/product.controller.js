@@ -16,7 +16,7 @@ const updateProduct = async ({ data, id }) => {
     const response = await ProductModel.update(data, { where: { id: id } });
     return response;
   } catch (err) {
-    logger.error({ operation: "addProduct", error: err.message });
+    logger.error({ operation: "updateProduct", error: err.message });
     return err.message;
   }
 };
@@ -25,8 +25,17 @@ const getProducts = async () => {
     const response = await ProductModel.findAll();
     return response;
   } catch (err) {
-    logger.error({ operation: "addProduct", error: err.message });
+    logger.error({ operation: "getProducts", error: err.message });
     return err.message;
   }
 };
-module.exports = { addProduct, getProducts, updateProduct };
+const deleteProduct = async (id) => {
+  try {
+    const response = await ProductModel.destroy({ where: { id: id } });
+    return response;
+  } catch (err) {
+    logger.error({ operation: "deleteProduct", error: err.message });
+    return err.message;
+  }
+};
+module.exports = { addProduct, getProducts, updateProduct, deleteProduct };
