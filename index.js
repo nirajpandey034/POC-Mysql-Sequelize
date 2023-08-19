@@ -9,8 +9,10 @@ app.options("*", cors());
 
 // importing routes
 const productRoute = require("./routes/product.route");
+const userRoute = require("./routes/user.route");
 
 app.use("/products", productRoute);
+app.use("/users", userRoute);
 
 app.listen(process.env.SHOP_APP_PORT, (err) => {
   if (err) console.log("Some error occured");
