@@ -29,6 +29,15 @@ const getUsers = async () => {
     return err.message;
   }
 };
+const getSingleUser = async (email) => {
+  try {
+    const response = await UserModel.findOne({ where: { email: email } });
+    return response;
+  } catch (err) {
+    logger.error({ operation: "getUsers", error: err.message });
+    return err.message;
+  }
+};
 const deleteUser = async (email) => {
   try {
     const response = await UserModel.destroy({ where: { email: email } });
@@ -38,4 +47,4 @@ const deleteUser = async (email) => {
     return err.message;
   }
 };
-module.exports = { addUser, getUsers, updateUser, deleteUser };
+module.exports = { addUser, getUsers, updateUser, deleteUser, getSingleUser };
