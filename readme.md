@@ -1,5 +1,8 @@
 # Environment Variables to be setup
 
+POC By: Niraj Kumar Pandey
+Technologies Used: NodeJS(ExpressJS) + MySQL + Sequelize ORM + JWT + Winston (Logging)
+
 ```
 # DB Environment Variables
 
