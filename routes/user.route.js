@@ -4,6 +4,7 @@ const router = express.Router();
 require("dotenv").config();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const random = require("random-string-alphanumeric-generator");
 
 const UserModel = require("../models/Users/user.model");
 const {
@@ -19,6 +20,10 @@ const {
     alter: true,
   });
 })();
+
+const createReference = () => {
+  return random.randomHex(6).toUpperCase();
+};
 router.post("/register", async (req, res) => {
   try {
     // getting input
@@ -47,7 +52,9 @@ router.post("/register", async (req, res) => {
     });
 
     // return new user
-    return res.status(201).json({ token: token, success: true });
+    return res
+      .status(201)
+      .json({ token: token, success: true, reference: createReference() });
   } catch (err) {
     return res.status(500).json({ error: err, success: false });
   }
@@ -73,6 +80,7 @@ router.post("/login", async (req, res) => {
         token: token,
         success: true,
         user: `${user.firstName} ${user.lastName}`,
+        reference: createReference(),
       });
     }
     return res.status(400).json({ success: false });

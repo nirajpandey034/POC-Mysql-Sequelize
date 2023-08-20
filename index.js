@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
@@ -10,9 +11,11 @@ app.options("*", cors());
 // importing routes
 const productRoute = require("./routes/product.route");
 const userRoute = require("./routes/user.route");
+const cartRoute = require("./routes/cart.route");
 
 app.use("/products", productRoute);
 app.use("/users", userRoute);
+app.use("/cart", cartRoute);
 
 app.listen(process.env.SHOP_APP_PORT, (err) => {
   if (err) console.log("Some error occured");
