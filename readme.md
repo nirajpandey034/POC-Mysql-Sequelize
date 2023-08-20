@@ -13,4 +13,7 @@ SHOP_DB_DIALECT = mysql
 # APP Environment Variables
 
 SHOP_APP_PORT
+
+# Key
+TOKEN_KEY
 ```
