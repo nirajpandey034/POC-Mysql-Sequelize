@@ -1,5 +1,5 @@
 const { createLogger, transports, format } = require("winston");
-const { combine, timestamp, label, prettyPrint } = format;
+const { combine, timestamp, label } = format;
 const CATEGORY = "Shop DB Logs";
 
 const logger = createLogger({
@@ -13,9 +13,9 @@ const logger = createLogger({
   ),
   transports: [
     //new transports:
-    new transports.File({
-      filename: "logs/Errors.log",
-    }),
+    // new transports.File({
+    //   filename: "logs/Errors.log",
+    // }),
     new transports.Console(),
   ],
   //...
