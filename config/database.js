@@ -7,7 +7,7 @@ const sequelize = new Sequelize(
   process.env.SHOP_DB_PASSWORD,
   {
     host: process.env.SHOP_DB_HOST,
-    dialect: process.env.SHOP_DB_DIALECT,
+    dialect: process.env.SHOP_DB_DIALECT || "mysql",
   }
 );
 
