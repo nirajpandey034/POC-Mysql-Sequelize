@@ -2,11 +2,13 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
 const app = express();
 // setup
 app.use(express.json());
 app.use(cors());
 app.options("*", cors());
+app.use(helmet());
 
 // importing routes
 const productRoute = require("./routes/product.route");

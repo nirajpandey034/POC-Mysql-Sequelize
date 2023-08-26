@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const random = require("random-string-alphanumeric-generator");
 
 const UserModel = require("../models/Users/user.model");
+const CartModel = require("../models/Cart/cart.model");
 const {
   addUser,
   getUsers,
@@ -21,7 +22,10 @@ const {
   });
 })();
 
-const createReference = () => {
+const getReference = async (email) => {
+  const response = await CartModel.findOne({ where: { user: email } });
+  const id = response?.dataValues?.id;
+  if (id) return id;
   return random.randomHex(6).toUpperCase();
 };
 router.post("/register", async (req, res) => {
@@ -80,7 +84,7 @@ router.post("/login", async (req, res) => {
         token: token,
         success: true,
         user: `${user.firstName} ${user.lastName}`,
-        reference: createReference(),
+        reference: await getReference(email),
       });
     }
     return res.status(400).json({ success: false });
