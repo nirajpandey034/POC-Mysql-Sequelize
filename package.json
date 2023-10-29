@@ -19,7 +19,7 @@
     "mysql2": "^3.6.0",
     "random-string-alphanumeric-generator": "^0.12.2",
     "sequelize": "^6.32.1",
-    "winston": "^3.10.0"
+    "winston": "^3.11.0"
   },
   "devDependencies": {
     "eslint": "^8.47.0"
